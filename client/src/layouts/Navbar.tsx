@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Menu, X, ChevronDown, Download, User, LogOut } from 'lucide-react'
 import Link from 'next/link' 
 import { Button } from '@/components/ui/button'
-
+import logo from '@/assets/images/khoi-nguyen.png';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [hoveredDropdown, setHoveredDropdown] = useState<string | null>(null)
@@ -56,15 +56,46 @@ const Navbar = () => {
   } 
 
   return (
-    <nav className="bg-gradient-to-r from-green-50 to-emerald-50 shadow-lg sticky top-0 z-50 border-b border-green-200">
+    <nav className="shadow-lg sticky top-0 z-50 border-b border-green-200" style={{ backgroundColor: '#ffffff' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-              Belden Brick
-            </Link>
-          </div>
+        <div className="flex items-center gap-3 flex-shrink-0">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <img
+            src={logo.src}
+            alt="Belden Brick Logo"
+            width={120}
+            style={{ height: "90px" }}
+            className="object-contain"
+          />
+        </Link>
+
+     <span
+  style={{
+    fontSize: "22px",
+    fontWeight: 700,
+    background: "linear-gradient(90deg, #1abc9c, #f1c40f)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    letterSpacing: "0.5px",
+    textShadow: "1px 1px 2px rgba(0,0,0,0.15)",
+  }}
+>
+  Chuyên gia ván phủ{" "}
+  <span
+    style={{
+      color: "#27ae60",
+      fontWeight: 800,
+      textShadow: "1px 1px 2px rgba(0,0,0,0.15)",
+    }}
+  >
+    Melamine
+  </span>
+</span>
+
+      </div>
+
 
           {/* Desktop Menu */}
           <div className="hidden md:block">
@@ -86,7 +117,7 @@ const Navbar = () => {
                       </Link>
                       
                       {hoveredDropdown === item.label && (
-                        <div className="absolute top-full left-0 w-48 bg-gradient-to-b from-green-50 to-emerald-50 rounded-md shadow-lg py-1 z-50 border border-green-200">
+                        <div className="absolute top-full left-0 w-48  rounded-md shadow-lg py-1 z-50 border border-green-200">
                           {item.dropdownItems?.map((dropdownItem) => (
                             <Link
                               key={dropdownItem.label}
@@ -127,7 +158,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gradient-to-b from-green-50 to-emerald-50 border-t border-green-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3  border-t border-green-200">
               {menuItems.map((item) => (
                 <div key={item.label}>
                   {item.hasDropdown ? (

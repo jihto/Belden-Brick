@@ -5,9 +5,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import HeroBanner1 from "@/assets/images/hero-banner-1.webp";
-import HeroBanner2 from "@/assets/images/hero-banner-2.webp";
-import HeroBanner3 from "@/assets/images/hero-banner-3.webp";
+import HeroBanner1 from "@/assets/images/img1.png";
+import HeroBanner2 from "@/assets/images/img2.png";
+import HeroBanner3 from "@/assets/images/img3.png";
 import { fadeInUp, slideInLeftStagger, slideInLeftItem, bounceIn } from '@/utils/animations';
 
 
