@@ -25,7 +25,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-32 px-4">
+      <section className="pt-32 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             ref={ref}
@@ -184,7 +184,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vision Section */}
-      <section className="py-32 px-4 bg-gradient-to-br from-green-50 to-emerald-50">
+      <section className="py-32 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-5 gap-16 items-center">
             <motion.div
@@ -312,7 +312,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-32 px-4 bg-gradient-to-br from-green-50 to-emerald-100">
+      <section className="py-32 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"

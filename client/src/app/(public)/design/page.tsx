@@ -2,7 +2,7 @@
 
 import HeroBanner from '@/features/HeroBanner';
 import { useState } from 'react';
-import { ChevronRight, Home } from 'lucide-react'; 
+import { ChevronRight, Home, ArrowRight, Phone, Mail, MessageCircle, X } from 'lucide-react'; 
 import Image from 'next/image';
 
 // Design data structure
@@ -78,6 +78,7 @@ const categories = ["Tất Cả", "Nhà ở", "Thương mại", "Nhà hàng"];
 
 export default function DesignPage() {
   const [selectedCategory, setSelectedCategory] = useState("Tất Cả");
+  const [selectedDesign, setSelectedDesign] = useState<Design | null>(null);
 
   const filteredDesigns = selectedCategory === "Tất Cả" 
     ? designs 
@@ -127,7 +128,11 @@ export default function DesignPage() {
           <div className="lg:w-3/4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredDesigns.map((design) => (
-                <div key={design.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div 
+                  key={design.id} 
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                  onClick={() => setSelectedDesign(design)}
+                >
                   {/* Design Image */}
                   <div className="aspect-4/3 overflow-hidden">
                     <Image
@@ -160,6 +165,106 @@ export default function DesignPage() {
             )}
           </div>
         </div>
+  
+        {/* Services Section */}
+        <div className="mt-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Dịch vụ thiết kế của chúng tôi
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Chúng tôi cung cấp các dịch vụ thiết kế toàn diện cho mọi loại công trình
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Service 1 */}
+            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Thiết kế kiến trúc
+              </h3>
+              <p className="text-gray-600">
+                Thiết kế tổng thể công trình, hồ sơ kỹ thuật chi tiết, giấy phép xây dựng
+              </p>
+            </div>
+
+            {/* Service 2 */}
+            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Thiết kế nội thất
+              </h3>
+              <p className="text-gray-600">
+                Tư vấn phong cách, layout không gian, lựa chọn vật liệu và đồ nội thất
+              </p>
+            </div>
+
+            {/* Service 3 */}
+            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Tư vấn xây dựng
+              </h3>
+              <p className="text-gray-600">
+                Giám sát thi công, tư vấn giải pháp xây dựng, tiết kiệm chi phí
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Design Dialog */}
+        {selectedDesign && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setSelectedDesign(null)}
+          >
+            <div 
+              className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">{selectedDesign.title}</h2>
+                  <p className="text-sm text-gray-600 mt-1">{selectedDesign.category}</p>
+                  {selectedDesign.description && (
+                    <p className="text-gray-600 mt-2">{selectedDesign.description}</p>
+                  )}
+                </div>
+                <button
+                  onClick={() => setSelectedDesign(null)}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X className="w-6 h-6 text-gray-600" />
+                </button>
+              </div>
+
+              {/* Image */}
+              <div className="relative w-full h-[70vh] bg-gray-100">
+                <Image
+                  src={selectedDesign.image}
+                  alt={selectedDesign.title}
+                  fill
+                  className="object-contain"
+                  sizes="90vw"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

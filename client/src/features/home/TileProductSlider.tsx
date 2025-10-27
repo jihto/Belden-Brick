@@ -70,7 +70,7 @@ export default function TileProductSlider() {
   };
 
   return (
-    <div ref={ref} className="min-h-screen bg-green-50 to-emerald-100 py-16 px-4 overflowx-hidden">
+    <div ref={ref} className="min-h-screen bg-white py-16 px-4 overflowx-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div 
@@ -80,13 +80,13 @@ export default function TileProductSlider() {
           variants={staggerContainer}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-green-900 mb-4"
+            className="text-3xl md:text-5xl font-bold text-gray-900 mb-4"
             variants={fadeInUp}
           >
             Bộ Sưu Tập Gạch
           </motion.h2>
           <motion.p 
-            className="text-lg text-green-700"
+            className="text-lg text-gray-700"
             variants={fadeInUp}
           >
             Khám phá những sản phẩm gạch cao cấp của chúng tôi
@@ -94,7 +94,7 @@ export default function TileProductSlider() {
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
+          className="grid md:grid-cols-2 gap-4 md:gap-12 items-center"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={staggerContainer}
@@ -156,7 +156,7 @@ export default function TileProductSlider() {
                   <motion.img
                     src={tiles[currentIndex].image}
                     alt={tiles[currentIndex].name}
-                    className="w-72 h-80 md:w-80 md:h-96 object-cover rounded-2xl shadow-2xl"
+                    className="w-76 h-84 md:w-80 md:h-96 object-cover rounded-2xl shadow-2xl"
                     key={currentIndex}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -170,7 +170,7 @@ export default function TileProductSlider() {
             {/* Navigation Buttons */}
             <motion.button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full transition-all duration-300 shadow-lg z-20"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-green-600 hover:bg-green-700 text-white p-1 rounded-full transition-all duration-300 shadow-lg z-20"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -178,7 +178,7 @@ export default function TileProductSlider() {
             </motion.button>
             <motion.button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full transition-all duration-300 shadow-lg z-20"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-green-600 hover:bg-green-700 text-white p-1 rounded-full transition-all duration-300 shadow-lg z-20"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -187,7 +187,7 @@ export default function TileProductSlider() {
 
             {/* Dots Indicator */}
             <motion.div 
-              className="flex justify-center gap-2 mt-8"
+              className="flex justify-center gap-2 md:mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -210,7 +210,7 @@ export default function TileProductSlider() {
 
           {/* Product Info Section */}
           <motion.div 
-            className="space-y-6 p-4 md:pl-4 bg-green-50 to-emerald-100 rounded-2xl z-10"
+            className="space-y-6 p-4 md:pl-4 bg-white rounded-2xl z-10"
             variants={fadeInRight}
           >
             <AnimatePresence mode="wait">
@@ -223,7 +223,7 @@ export default function TileProductSlider() {
                 transition={{ duration: 0.5 }}
               >
                 <motion.div 
-                  className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4"
+                  className="inline-block bg-green-600 text-white px-2 md:px-4 py-1 rounded-full text-xs md:text-sm font-semibold mb-2 md:mb-4"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.1, duration: 0.3 }}
@@ -232,7 +232,7 @@ export default function TileProductSlider() {
                 </motion.div>
                 
                 <motion.h3 
-                  className="text-3xl font-bold text-green-900 mb-4"
+                  className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-4"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.4 }}
@@ -241,19 +241,19 @@ export default function TileProductSlider() {
                 </motion.h3>
                 
                 <motion.div 
-                  className="flex items-center gap-4 mb-6"
+                  className="flex items-center gap-4 mb-3 md:mb-6"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.4 }}
                 >
-                  <div className="bg-white rounded-lg px-4 py-2 shadow-md">
-                    <span className="text-green-700 font-semibold">Kích thước:</span>
+                  <div >
+                    <span className="text-gray-700 font-semibold">Kích thước:</span>
                     <span className="text-green-900 ml-2 font-bold">{tiles[currentIndex].size}</span>
                   </div>
                 </motion.div>
 
                 <motion.p 
-                  className="text-green-800 text-lg leading-relaxed mb-6"
+                  className="text-gray-800 text-base md:text-lg leading-relaxed mb-3 md:mb-6"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
@@ -268,7 +268,7 @@ export default function TileProductSlider() {
                   transition={{ delay: 0.5, duration: 0.4 }}
                 >
                   <motion.h4 
-                    className="text-green-900 font-bold text-xl mb-4"
+                    className="text-gray-900 font-bold text-xl mb-4"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6, duration: 0.4 }}

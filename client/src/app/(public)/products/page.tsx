@@ -6,6 +6,7 @@ import ProductBanner from "@/assets/images/product-banner.webp";
 import { apiClient } from '@/lib/api';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { ChevronRight, Home } from 'lucide-react';
 
 // Product data structure from API
 interface Product {
@@ -96,7 +97,12 @@ export default function ProductsPage() {
         />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-        {/* Loading State */}
+        {/* Breadcrumb */}
+        <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+          <Home className="w-4 h-4" />
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900 font-medium">  </span>
+        </nav>        {/* Loading State */}
         {loading && (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-green-900"></div>
@@ -117,31 +123,33 @@ export default function ProductsPage() {
           </div>
         )}
 
-        {/* Category Filter */}
         {!loading && !error && (
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Danh mục sản phẩm</h2>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 text-sm font-medium transition-colors ${
-                    selectedCategory === category
-                      ? 'bg-green-900 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Category Filter Sidebar */}
+            <div className="lg:w-1/4">
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">Danh mục sản phẩm</h2>
+                <div className="space-y-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`w-full text-left px-4 py-3 text-sm font-medium transition-colors rounded-md ${
+                        selectedCategory === category
+                          ? 'bg-green-900 text-white'
+                          : 'bg-white text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        )}
 
-        {/* Products Grid */}
-        {!loading && !error && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {/* Products Grid */}
+            <div className="lg:w-3/4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
               <div key={product.id} className="bg-white overflow-hidden" onClick={() => router.push(`/products/${product.id}`)}>
                 {/* Product Image */}
@@ -177,13 +185,15 @@ export default function ProductsPage() {
                 </div>
               </div>
             ))}
-          </div>
-        )}
+              </div>
 
-        {/* No products message */}
-        {!loading && !error && filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500">Không tìm thấy sản phẩm nào trong danh mục này.</p>
+              {/* No products message */}
+              {filteredProducts.length === 0 && (
+                <div className="text-center py-12">
+                  <p className="text-gray-500">Không tìm thấy sản phẩm nào trong danh mục này.</p>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

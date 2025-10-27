@@ -37,11 +37,11 @@ export default function NewsBlogSection() {
   ];
 
   return (
-    <div ref={ref} className="bg-gradient-to-br from-green-50 to-emerald-50 py-20 px-4">
+    <div ref={ref} className="bg-white py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div 
-          className="flex items-center justify-between mb-12"
+          className="flex md:flex-row flex-col md:items-center md:justify-between md:mb-12 mb-4"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={staggerContainer}
@@ -49,14 +49,14 @@ export default function NewsBlogSection() {
           <motion.div variants={staggerItem}>
             <div className="flex items-center gap-3 mb-4">
               <motion.h2 
-                className="text-5xl font-bold text-green-900"
+                className="text-3xl md:text-5xl font-bold text-gray-900"
                 variants={fadeInUp}
               >
                 Tin Tức & Sự Kiện
               </motion.h2>
             </div>
             <motion.p 
-              className="text-xl text-green-700"
+              className="text-lg md:text-xl text-gray-700"
               variants={fadeInUp}
             >
               Cập nhật xu hướng và dự án mới nhất
@@ -99,13 +99,13 @@ export default function NewsBlogSection() {
                 />
                 
                 {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 via-green-900/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent"></div>
 
                 {/* Number Badge */}
                 <div className="absolute top-4 left-4">
                   <div className="bg-white rounded-xl px-4 py-2 shadow-lg">
-                    <div className="text-4xl font-bold text-green-600">{post.number}</div>
-                    <div className="flex items-center gap-1 text-xs text-green-700 font-semibold">
+                    <div className="text-4xl font-bold text-gray-600">{post.number}</div>
+                    <div className="flex items-center gap-1 text-xs text-gray-700 font-semibold">
                       <Calendar size={12} />
                       <span>{post.date}</span>
                     </div>
@@ -122,7 +122,7 @@ export default function NewsBlogSection() {
                 {/* Featured Badge */}
                 {post.featured && (
                   <div className="absolute bottom-4 right-4">
-                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+                    <div className="bg-gradient-to-r from-red-600 to-red-600 text-white text-sm font-bold px-4 py-1 rounded-full shadow-lg">
                       Nổi Bật
                     </div>
                   </div>
@@ -131,7 +131,7 @@ export default function NewsBlogSection() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-green-900 font-bold text-xl leading-tight mb-4 group-hover:text-green-600 transition-colors duration-300">
+                <h3 className="text-gray-900 font-bold text-xl leading-tight mb-4 transition-colors duration-300">
                   {post.title}
                 </h3>
 
@@ -143,9 +143,6 @@ export default function NewsBlogSection() {
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </div>
-
-              {/* Hover Effect Border */}
-              <div className="absolute inset-0 border-4 border-transparent group-hover:border-green-600 rounded-2xl transition-all duration-300 pointer-events-none"></div>
             </motion.div>
           ))}
         </motion.div>

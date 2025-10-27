@@ -79,7 +79,7 @@ export default function HeroSection() {
       {/* Navigation Buttons */}
       <motion.button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 z-10"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-1 md:p-3 rounded-full transition-all duration-300 z-10"
         aria-label="Previous slide"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -88,7 +88,7 @@ export default function HeroSection() {
       </motion.button>
       <motion.button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 z-10"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-1 md:p-3 rounded-full transition-all duration-300 z-10"
         aria-label="Next slide"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}

@@ -86,22 +86,25 @@ export default function SolutionsTabs() {
   ];
 
   return (
-    <div ref={ref} className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-100 py-20 px-4">
+    <div ref={ref} className="min-h-screen bg-gray-50 py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div 
-          className="text-start mb-8"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeInUp}
-        >
-          <motion.h2 
-            className="text-3xl md:text-5xl font-bold text-green-900"
-            variants={textReveal}
-          >
-            Giải Pháp Toàn Diện
-          </motion.h2> 
-        </motion.div>
+          <motion.div variants={staggerItem} className="mb-12">
+            <div className="flex items-center gap-3 mb-4">
+              <motion.h2 
+                className="text-3xl md:text-5xl font-bold text-gray-900"
+                variants={fadeInUp}
+              >
+                Giải Pháp Toàn Diện
+              </motion.h2>
+            </div>
+            <motion.p 
+              className="text-lg text-gray-700"
+              variants={fadeInUp}
+            >
+              Giải pháp toàn diện cho các dự án của bạn
+            </motion.p>
+          </motion.div>
 
         {/* Main Content Grid */}
         <motion.div 
@@ -121,7 +124,7 @@ export default function SolutionsTabs() {
               variants={staggerContainer}
             >
               <motion.div 
-                className="flex justify-center items-center"
+                className="flex justify-center items-center border-b"
                 variants={staggerItem}
               >
                 {solutions.map((solution, index) => { 
@@ -129,7 +132,7 @@ export default function SolutionsTabs() {
                     <motion.button
                       key={solution.id}
                       onClick={() => setActiveTab(index)}
-                      className={`w-full max-md:text-sm flex justify-center items-center hover:text-green-600 text-center pb-2 md:py-4 gap-4 font-semibold transition-all duration-300 ${
+                      className={`w-full max-md:text-xs flex justify-center items-center hover:text-green-600 text-center pb-2 md:py-4 gap-4 font-semibold transition-all duration-300 ${
                         activeTab === index
                           ? 'text-green-600'
                           : 'text-black'
@@ -171,7 +174,7 @@ export default function SolutionsTabs() {
                   transition={{ delay: 0.1, duration: 0.4 }}
                 >
                   <motion.h3 
-                    className="text-3xl font-bold text-green-900 mb-4"
+                    className="text-lg md:text-3xl font-bold text-gray-900 mb-4"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.4 }}
@@ -179,7 +182,7 @@ export default function SolutionsTabs() {
                     {solutions[activeTab].description}
                   </motion.h3>
                   <motion.p 
-                    className="text-green-700 text-lg leading-relaxed"
+                    className="text-gray-700 text-base md:text-lg leading-relaxed"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.4 }}
@@ -206,12 +209,12 @@ export default function SolutionsTabs() {
                         transition={{ delay: 0.5 + index * 0.1, duration: 0.3 }}
                       >
                         <motion.div 
-                          className="bg-green-100 p-2 rounded-lg"
+                          className="bg-gray-100 p-2 rounded-lg"
                           whileHover={{ scale: 1.1 }}
                         >
-                          <FeatureIcon size={20} className="text-green-600" />
+                          <FeatureIcon size={20} className="text-gray-600" />
                         </motion.div>
-                        <span className="text-green-800">{feature.text}</span>
+                        <span className="text-gray-800">{feature.text}</span>
                       </motion.div>
                     );
                   })}

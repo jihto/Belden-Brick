@@ -53,25 +53,30 @@ export default function ProjectsSection() {
     ];
 
     return (
-        <div ref={ref} className="bg-green-50 py-12 px-4">
+        <div ref={ref} className="bg-gray-50 py-12 px-4">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div 
-                    className="flex items-center justify-between mb-8"
+                    className="flex md:flex-row flex-col md:items-center md:justify-between md:mb-8 mb-4"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={staggerContainer}
                 >
-                    <motion.div 
-                        className="flex items-center gap-3"
-                        variants={staggerItem}
-                    >
+                    <motion.div variants={staggerItem}>
+                    <div className="flex items-center gap-3 mb-4">
                         <motion.h2 
-                            className="text-4xl font-bold text-green-600 uppercase"
-                            variants={fadeInLeft}
+                        className="text-3xl md:text-5xl font-bold text-gray-900"
+                        variants={fadeInUp}
                         >
-                            Dự Án & Video
+                        Dự án & Video
                         </motion.h2>
+                    </div>
+                    <motion.p 
+                        className="text-lg md:text-xl text-gray-700"
+                        variants={fadeInUp}
+                    >
+                        Cập nhật xu hướng và dự án mới nhất
+                    </motion.p>
                     </motion.div>
                     <motion.a 
                         href="/projects" 
